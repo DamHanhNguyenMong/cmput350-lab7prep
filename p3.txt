@@ -1,7 +1,19 @@
 Hash table:
+- Memory cost: Since hash buckets and nodes require extra memory, cost is med-high
+- Access speed: Usually O(1) average lookup, but hashing and cache misses can slow it down
+- Maintenance: Easy to add/remove entities and components
 
 Map:
+- Memory cost: High since each entry needs a tree node and extra pointers
+- Access speed: O(logN) since pointer traversal is less cache-friendly
+- Maintenance: Insertion and removal are straightforward, and IDs stay ordered
 
 Sparse mapping 1:
+- Memory cost:  O(NK) since every entity stores K indices, even when it doesn't have those components
+- Access speed: O(1) since fast direct access, but rows contain all component types
+- Maintenance: Easy to look up, but must update entries when entities or components change
 
 Sparse mapping 2:
+- Memory cost:  O(NK) if each vector covers all entity IDs but can be compact if unused entries are avoided
+- Access speed: O(1) since direct access with each component type stored contiguously
+- Maintenance: Easy to look up and adding/removing entities requires updating each component vector

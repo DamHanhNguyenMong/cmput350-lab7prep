@@ -1,4 +1,15 @@
-2a. 
-2b. 
-2c. 
-2d. 
+2a. std::forward<Args>(args)... forwards each argument while preserving whether it was passed
+    as an lvalue or rvalue
+    Supposed we have (19,5.5,'a')
+    Then: std::forward<int>(arg1), std::forward<double>(arg2), std::forward<char>(arg3)
+2b. (f(args) + 1)... applies f to each argument and adds 1 to each result
+    So it expands to: f(arg1) + 1, f(arg2) + 1, f(arg3) + 1
+2c. std::tuple<Args...> creates a tuple type containing all the argument types
+    So: std::tuple<int, double, char>
+2d. std::tuple<std::vector<Args>...> creates a tuple containing one vector for each argument type
+    So: 
+    std::tuple<
+        std::vector<int>,
+        std::vector<double>,
+        std::vector<char>
+    >
